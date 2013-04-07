@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-if ((ARGV.size < 2) || !(ARGV[0] ~= /hopalong|pickover/i))
-  puts "Usage: ruby draw_attractor.rb <attractor> <image name> [options]"
-  exit 1
-end
-=======
 require './attractor'
 require './bitmap'
 
@@ -45,5 +39,3 @@ if (!supported_types[args[:type]])
   puts usage_string
   exit 1
 end
-
->>>>>>> 1886899d29b1cf91c993054f7cfe47819294d4b1
