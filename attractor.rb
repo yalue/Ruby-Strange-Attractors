@@ -225,5 +225,7 @@ a.draw
 gradient = [[0, 0, 0], [0, 255, 0]]
 canvas = a.get_canvas
 output.set_pixel_array(canvas.get_gradient_bitmap(gradient))
+puts "Antialiasing..."
+4.times {output.antialias}
 output.save_file("hopalong.bmp")
 

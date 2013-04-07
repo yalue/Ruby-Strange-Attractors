@@ -21,6 +21,47 @@ class Bitmap
     true
   end
 
+  # Performs a single antialiasing pass on the image
+  def antialias
+    new_pixels = []
+    @height.times {|i| new_pixels << []; @width.times {new_pixels[i] << 0}}
+    @height.times do |i|
+      @width.times do |j|
+        # Sample each surrounding pixel
+        surrounding = []
+        # left
+        p = @pixel_array[i][j - 1]
+        surrounding << p if (p)
+        # right
+        p = @pixel_array[i][j + 1]
+        surrounding << p if (p)
+        # center
+        surrounding << @pixel_array[i][j]
+        p = nil
+        # above
+        p = @pixel_array[i - 1][j] if (i > 0)
+        surrounding << p if (p)
+        p = nil
+        # below
+        p = @pixel_array[i + 1][j] if (i < (@height - 1))
+        surrounding << p if (p)
+        # Set new pixel to average colors of surrounding pixels
+        red = 0
+        green = 0
+        blue = 0
+        surrounding.each do |pixel|
+          colors = Bitmap.bits_to_rgb(pixel)
+          red += colors[0]
+          green += colors[1]
+          blue += colors[2]
+        end
+        c = surrounding.size
+        new_pixels[i][j] = Bitmap.rgb_to_16bit(red / c, green / c, blue / c)
+      end
+    end
+    @pixel_array = new_pixels
+  end
+
   # Sets the resolution in pixels per meter. Returns false if the given
   # resolution is invalid.
   def set_resolution(new_res)
