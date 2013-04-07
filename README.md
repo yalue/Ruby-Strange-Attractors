@@ -4,10 +4,13 @@ Ruby-Strange-Attractors
 A simple strange attractor renderer in Ruby
 -------------------------------------------
 
-For now, only Hopalong and Pickover attractors are implemented.
+Renders strange attractors in fully native ruby.
 
-Usage: `ruby draw_attractor.rb <hopalong|pickover> <output image> [options]`
+Usage: `ruby draw_attractor.rb <type> <output image> [options]`.
 The output image will always be a bitmap.
+
+For now, the only available types are "hopalong" or "pickover".
+
 Available options are:
 
  - `-x_res <the horizontal resolution of the image>`: The width, in pixels
