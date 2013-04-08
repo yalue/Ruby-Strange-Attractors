@@ -35,8 +35,8 @@ class Bitmap
         # right
         p = @pixel_array[i][j + 1]
         surrounding << p if (p)
-        # center
-        surrounding << @pixel_array[i][j]
+        # center--add multiple times to give it more weight.
+        5.times {surrounding << @pixel_array[i][j]}
         p = nil
         # above
         p = @pixel_array[i - 1][j] if (i > 0)
