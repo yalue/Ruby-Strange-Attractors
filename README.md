@@ -1,10 +1,10 @@
-Ruby-Strange-Attractors
+Ruby Strange Attractors
 =======================
 
 A simple strange attractor renderer in Ruby
 -------------------------------------------
 
-Renders strange attractors in fully native ruby.
+Renders strange attractors in pure ruby.
 
 Usage: `ruby draw_attractor.rb <type> <output image> [options]`.
 The output image will always be a bitmap.
@@ -20,9 +20,9 @@ Available options are:
  - `-i <iterations>`: The number of iterations to draw
 
  - `-gradient <file name>`: The name of a file defining a color gradient. The
-   file should contain any number of lines of the format R G B, where R, G and
-   B are numbers between 0 and 255 representing the intensity of the red, blue
-   and green color values.
+   file should contain any number of lines where each line has the format
+   `R G B`, where R, G and B are 3 space-separated numbers between 0 and 255
+   representing the intensity of the red, blue and green color values.
 
  - `-a <number>` `-b <number>` `-c <number>` `-d <number>`: Parameters to the
    particular attractor

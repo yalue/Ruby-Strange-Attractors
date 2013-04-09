@@ -100,8 +100,8 @@ class DrawingCanvas
     c_2 = gradient_array[base_index + 1]
     c_new = [0, 0, 0]
     c_new[0] = ((c_2[0].to_f - c_1[0].to_f) * percent_diff) + c_1[0]
-    c_new[1] = ((c_2[1].to_f - c_1[1].to_f) * percent_diff) + c_1[0]
-    c_new[2] = ((c_2[2].to_f - c_1[2].to_f) * percent_diff) + c_1[0]
+    c_new[1] = ((c_2[1].to_f - c_1[1].to_f) * percent_diff) + c_1[1]
+    c_new[2] = ((c_2[2].to_f - c_1[2].to_f) * percent_diff) + c_1[2]
     Bitmap.rgb_to_16bit((c_new[0] * scale).round, (c_new[1] * scale).round,
       (c_new[2] * scale).round)
   end
