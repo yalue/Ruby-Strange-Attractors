@@ -1,4 +1,6 @@
 class Bitmap
+  attr_reader :pixel_array, :width, :height
+
   def initialize
     @pixel_array = nil
     @width = 0
@@ -69,6 +71,10 @@ class Bitmap
     return false if (new_res >= 0xffffffff)
     @resolution = new_res
     true
+  end
+
+  # Does nothing, made for compatibility with the PNG class
+  def set_comment(comment)
   end
 
   # Saves the image to the given filename, overwriting if a file already exists

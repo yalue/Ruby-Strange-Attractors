@@ -1,5 +1,6 @@
 require './attractor'
 require './bitmap'
+require './png_image'
 
 def get_arg_value(arg, args)
   i = args.index("-" + arg)
@@ -24,7 +25,19 @@ def get_args_hash(arguments)
   to_return[:d] = get_arg_value("d", arguments)
   to_return[:gradient_file] = get_arg_value("gradient", arguments)
   to_return[:antialias] = get_arg_value("antialias", arguments)
+  to_return[:output_format] = get_arg_value("output_format", arguments)
   to_return
+end
+
+# Formats a hash as a string.
+def args_to_string(arguments)
+  str = ""
+  arguments.each_key do |k|
+    next if (arguments[k] == nil)
+    str << ", " if (str != "")
+    str << "#{k.to_s}: #{arguments[k].to_s}"
+  end
+  str
 end
 
 # Returns a gradient array, or nil if the filename was invalid.
@@ -74,12 +87,15 @@ a.c = args[:c].to_f if (args[:c])
 a.d = args[:d].to_f if (args[:d])
 a.set_output_dimensions(x_res, y_res)
 a.draw
-output = Bitmap.new
-puts "Converting to bitmap..."
+output = PNGImage.new
+output = Bitmap.new if (args[:output_format] =~ /bitmap/i)
+puts "Coloring..."
 output.set_pixel_array(a.get_canvas.get_gradient_bitmap(gradient))
 if (args[:antialias] =~ /true/i)
   puts "Antialiasing..."
   output.antialias
 end
+output.set_comment("(#{args_to_string(args)})")
+puts "Saving image file..."
 output.save_file(args[:output])
 

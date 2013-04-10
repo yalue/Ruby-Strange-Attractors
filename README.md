@@ -4,10 +4,10 @@ Ruby Strange Attractors
 A simple strange attractor renderer in Ruby
 -------------------------------------------
 
-Renders strange attractors in pure ruby.
+Renders strange attractors in pure ruby. Requires ruby 1.9.3 or higher (for
+better zlib support).
 
 Usage: `ruby draw_attractor.rb <type> <output image> [options]`.
-The output image will always be a bitmap.
 
 For now, the only available types are "hopalong" or "pickover".
 
@@ -30,3 +30,5 @@ Available options are:
  - `-antialias <true or false>`: Whether to antialias a resulting image.
    Defaults to 'false'. Works better for some types than others.
 
+ - `-output_format <bitmap or png>`: Output is png by default, but this may be
+   used to output a bitmap instead.
