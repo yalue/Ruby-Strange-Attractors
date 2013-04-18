@@ -59,7 +59,8 @@ end
 usage_string = "Usage: ruby #{__FILE__} <type> <output file> [options]"
 supported_types = {
   "pickover"=>Pickover,
-  "hopalong"=>Hopalong
+  "hopalong"=>Hopalong,
+  "random"=>RandomAttractor
 }
 
 args = get_args_hash(ARGV)

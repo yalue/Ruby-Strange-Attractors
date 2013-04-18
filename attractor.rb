@@ -128,3 +128,37 @@ class Pickover
   end
 end
 
+# This attractor only populates the canvas with random points
+class RandomAttractor
+  attr_accessor :a, :b, :c, :d
+
+  def initialize
+    @iterations = 100000
+    @canvas = DrawingCanvas.new(-2.0, 2.0, -2.0, 2.0, 800, 800)
+  end
+
+  def set_output_dimensions(x, y)
+    return nil if (x < 1)
+    return nil if (y < 1)
+    @canvas = DrawingCanvas.new(-2.0, 2.0, -2.0, 2.0, x, y)
+  end
+
+  def draw
+    puts "Drawing randomly..."
+    @iterations.times do
+      x = (rand * 4.0) - 2.0
+      y = (rand * 4.0) - 2.0
+      @canvas.draw_point(x, y)
+    end
+  end
+
+  def get_canvas
+    @canvas
+  end
+
+  def set_iterations(i)
+    return nil if (i <= 0)
+    @iterations = i
+  end
+end
+

@@ -89,7 +89,7 @@ class PNGImage
   # Returns a formatted PNG chunk containing the given binary data
   def generate_chunk(type, data)
     length = data.size
-    # Ensure the type is 4 bytes long. Prepend lowercase letters if lenght < 4
+    # Ensure the type is 4 bytes long. Prepend lowercase letters if length < 4
     type = type.rjust(4, 'z')
     type = type.unpack("C*")[0..3].pack("C*")
     crc = Zlib::crc32(type + data)
@@ -154,11 +154,11 @@ class PNGImage
   def sub_filter(i)
     filtered = [1]
     @rows[i].size.times do |j|
-      if (j == 0)
+      if (j < 3)
         filtered << @rows[i][j]
         next
       end
-      filtered << mod256_difference(@rows[i][j], @rows[i][j - 1])
+      filtered << mod256_difference(@rows[i][j], @rows[i][j - 3])
     end
     filtered
   end
