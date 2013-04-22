@@ -1,11 +1,17 @@
 require 'zlib'
 require './bitmap'
 
+# A class for creating a PNG-formatted image.
 class PNGImage
-  def initialize
+  attr_accessor :dynamic_filter_selection
+
+  # If the parameter is false, all lines are filtered using the 'none' filter.
+  # According to the PNG spec, this is better for truecolor images.
+  def initialize(dynamic_filter_selection = false)
     @bitmap = Bitmap.new
     @rows = nil
     @comment = ""
+    @dynamic_filter_selection = dynamic_filter_selection
   end
 
   # Takes a 2-D rectangular array of 16-bit color values. Returns true on
@@ -70,7 +76,11 @@ class PNGImage
   # Returns the formatted IDATA chunk for the image
   def idat_chunk
     data = ""
-    @rows.size.times {|i| data << filter_line(i).pack("C*")}
+    if (@dynamic_filter_selection)
+      @rows.size.times {|i| data << filter_line(i).pack("C*")}
+    else
+      @rows.size.times {|i| data << no_filter(i).pack("C*")}
+    end
     z = Zlib::Deflate.new(9, 12, Zlib::DEF_MEM_LEVEL)
     data = z.deflate(data, Zlib::FINISH)
     generate_chunk("IDAT", data)

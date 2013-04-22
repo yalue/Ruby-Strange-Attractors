@@ -1,3 +1,5 @@
+# A class for creating a 16-bit bitmap image file, along with utility methods
+# relating to coloring and converting 16 bit color values.
 class Bitmap
   attr_reader :pixel_array, :width, :height
 

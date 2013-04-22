@@ -1,6 +1,7 @@
 require './bitmap'
 require './drawing_canvas'
 
+# Defintes the 'Hopalong' attractor.
 class Hopalong
   attr_accessor :a, :b, :c, :d
   def initialize
@@ -71,6 +72,7 @@ class Hopalong
   end
 end
 
+# Defines the 'Pickover' attractor
 class Pickover
   attr_accessor :a, :b, :c, :d
   def initialize

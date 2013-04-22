@@ -1,6 +1,8 @@
 require './bitmap'
 
-# A canvas that the attractors are rendered onto.
+# A canvas that the attractors are rendered onto--handles converting between
+# (x, y) cartesian coordinates and pixels. Each pixel is represented by a
+# single integer.
 class DrawingCanvas
   attr_accessor :max_x, :min_x, :max_y, :min_y, :x_res, :y_res
   attr_reader :canvas
