@@ -17,7 +17,7 @@ Available options are:
 
  - `-y_res <the vertical resolution of the image>`: The height, in pixels
 
- - `-i <iterations>`: The number of iterations to draw
+ - `-iterations <iterations>`: The number of iterations to draw
 
  - `-gradient <file name>`: The name of a file defining a color gradient. The
    file should contain any number of lines where each line has the format
