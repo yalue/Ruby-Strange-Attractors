@@ -9,6 +9,8 @@ better zlib support).
 
 Usage: `ruby draw_attractor.rb <type> <output image> [options]`.
 
+Basic example: `ruby draw_attractor.rb pickover pickover.png`.
+
 For now, the only available types are "hopalong" or "pickover".
 
 Available options are:
