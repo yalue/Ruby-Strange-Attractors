@@ -7,9 +7,9 @@ A simple strange attractor renderer in Ruby
 Renders strange attractors in pure ruby. Requires ruby 1.9.3 or higher (for
 better zlib support).
 
-Usage: `ruby draw_attractor.rb <type> <output image> [options]`.
+Usage: `ruby draw_attractor.rb <type> <output image> [options]`
 
-Basic example: `ruby draw_attractor.rb pickover pickover.png`.
+Basic example: `ruby draw_attractor.rb pickover pickover.png`
 
 For now, the only available types are "hopalong" or "pickover".
 
